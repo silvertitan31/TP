@@ -1,0 +1,47 @@
+{% extends "core\master.html" %}
+{% load static wagtailcore_tags %}
+{% load menu_tags %}
+
+from streams import blocks
+
+
+{% block content %}
+
+<div class="container js--content">
+    <div class="row">
+        <div class="col-12 py-4">
+
+
+            {% for cycle in self.key_stage_card.all %}
+            <div class="row">
+                <div class="card shadow card-dark">
+                    <div class="card-header text-center">
+                        <h5 class="text-uppercase font-weight-bolder text-center align-middle">{{cycle.title}}</h5>
+                        <p class="text-right">
+                            {{cycle.description|richtext}}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled card-columns">
+                        {%for block in cycle.content %}
+                        {% include_block block %}
+                        {%endfor%}
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+
+
+
+        </div>
+    </div>
+    <!--/row-->
+</div>
+<!--container-->
+
+{% endblock content %}
