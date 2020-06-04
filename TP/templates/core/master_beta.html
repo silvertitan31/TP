@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% with self.get_site.site_name as site_name %}
+        {% if site_name %}- {{ site_name }}{% endif %}
+        {% endwith %}
+        {% endblock %}
+    </title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {# Global stylesheets #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- <link href="https://getbootstrap.com/docs/4.0/assets/css/docs.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/TP-lesson.css' %}">
+
+    {% block extra_css %}
+    {# Override this in templates to add extra stylesheets #}
+    {% endblock %}
+</head>
+
+<body>
+
+    <style>
+
+    </style>
+    <header class="navbar navbar-expand main-navbar flex-md container-fluid  flex-column">
+
+        <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        <img src="{% static 'img/logo_banner_2.png' %}" alt="TeachingPeriodically Logo" class="logo">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <header class="navbar navbar-expand bg-dark navbar-dark flex-md container-fluid sticky fixed-top bd-navbar">
+
+        <div class="navbar-nav-scroll float">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><b>Chemistry</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=".physics">C3</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link float-right" href=".physics">Atomic Structure</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=".physics">Subjects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link float-right" href=".physics">User</a>
+                </li>
+            </ul>
+        </div>
+      
+    </header>
+
+
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+                <nav class="collapse bd-links" id="bd-docs-nav">
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/docs/4.0/getting-started/introduction/">
+                            KS3 Chemistry
+                        </a>
+
+                        <ul class="nav bd-sidenav">
+                            <li>
+                                <a href="/docs/4.0/getting-started/introduction/">
+                                    Introduction
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/download/">
+                                    Alcohols
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/contents/">
+                                    Alkenes
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/browsers-devices/">
+                                    Hess' Law
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/javascript/">
+                                    Thermodynamics
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/theming/">
+                                    Titations
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/build-tools/">
+                                    Energetics
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/webpack/">
+                                    Atoms
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/accessibility/">
+                                    Periodic Table
+                                </a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="bd-toc-item">
+                        <a class="bd-toc-link" href="/docs/4.0/getting-started/introduction/">
+                            KS4 Chemistry
+                        </a>
+
+                        <ul class="nav bd-sidenav">
+                            <li>
+                                <a href="/docs/4.0/getting-started/introduction/">
+                                    Introduction
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/download/">
+                                    Alcohols
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/contents/">
+                                    Alkenes
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/browsers-devices/">
+                                    Hess' Law
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/javascript/">
+                                    Thermodynamics
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/theming/">
+                                    Titations
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/build-tools/">
+                                    Energetics
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/webpack/">
+                                    Atoms
+                                </a></li>
+                            <li>
+                                <a href="/docs/4.0/getting-started/accessibility/">
+                                    Periodic Table
+                                </a></li>
+                        </ul>
+                    </div>
+
+                </nav>
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+                <iframe
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vRV4AVr-g-zIuVcDEL3zGE7vy4-O-EnT2vyTQTxYfEwiG622ivBAqbfCIVridt7lKKiPlYO75Y_kogM/embed?start=false&amp;loop=false&amp;delayms=60000"
+                    allowfullscreen="allowfullscreen" width="100%" height="550" frameborder="10"></iframe>
+                <iframe
+                    src="https://docs.google.com/presentation/d/e/2PACX-1vRV4AVr-g-zIuVcDEL3zGE7vy4-O-EnT2vyTQTxYfEwiG622ivBAqbfCIVridt7lKKiPlYO75Y_kogM/embed?start=false&amp;loop=false&amp;delayms=60000"
+                    allowfullscreen="allowfullscreen" width="100%" height="550" frameborder="10"></iframe>
+            </main>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="/docs/4.0/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="/docs/4.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/docs.min.js"></script>
+
+
+
+
+
+    {# Global javascript #}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/TP.js' %}"></script>
+
+    <script src="{%static '/vendor/jquery.waypoints.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".js--content").waypoint(function (direction) {
+                if (direction == "down") {
+
+                    $('#navbar-subject').addClass('sticky');
+                }
+                else {
+                    $('#navbar-subject').removeClass('sticky');
+                }
+            }, {
+                offset: '100px'
+            })
+
+        })
+    </script>
+
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+
+    {% endblock %}
+</body>
+
+</html>

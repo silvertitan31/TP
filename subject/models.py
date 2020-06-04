@@ -31,11 +31,15 @@ class SubjectLandingPage(Page):
     def get_context(self,request,*args,**kwargs):
         context = super().get_context(request,*args,**kwargs)
         context["keystages"] = SubjectKSLandingPage.objects.live().public()
+        context['SubjectLandingPage'] = self
+        context['menuitems'] = self.get_children().filter(live=True, show_in_menus=True)
         return context
 
 class SubjectKSLandingPage(Page):
         '''KS Landing Page Per Subject'''
         
+       
+          
         
         class Meta:
             verbose_name = "Key Stage Description for Subject"

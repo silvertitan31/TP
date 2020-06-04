@@ -7,7 +7,7 @@ from wagtail.core.models import Page, Orderable
 
 class LessonPage(Page):
     
-    templates = 'lesson/lesson_page.html'
+    templates = 'lesson/beta.html'
     parent_page_types = ["subject.SubjectLandingPage","subject.SubjectKSLandingPage"]
     
     lesson_name = models.CharField(
@@ -22,4 +22,8 @@ class LessonPage(Page):
         FieldPanel("lesson_name"),
         FieldPanel("presentation_link")        
     ]
+    
+class Beta(Page):
+
+    templates = 'lesson/beta.html'
     

@@ -1,8 +1,90 @@
 {% extends 'core/master.html' %}
 
+{% load menu_tags %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="style2.css">
+    <!-- Scrollbar Custom CSS -->
+    <!-- <link rel="stylesheet" -->
+        <!-- href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"> -->
+
+    <style>
+        .wrapper {
+    display: flex;
+    width: 100%;
+}
+
+        #sidebar {
+            width: 150px;
+            position: fixed;
+            top: 180px;
+            left: 0;
+            height: 100vh;
+            z-index: 999;
+            background: #343a40;
+            color: #fff;
+            transition: all 0.3s;
+        }
+    </style>
+{% endblock extra_css %}
+{% block sidebar %}
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>Bootstrap Sidebar</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <p>Dummy Heading</p>
+        <li class="active">
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">Home 1</a>
+                </li>
+                <li>
+                    <a href="#">Home 2</a>
+                </li>
+                <li>
+                    <a href="#">Home 3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">About</a>
+        </li>
+        <li>
+            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                class="dropdown-toggle">Pages</a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Page 1</a>
+                </li>
+                <li>
+                    <a href="#">Page 2</a>
+                </li>
+                <li>
+                    <a href="#">Page 3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Portfolio</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+
+</nav>
+{% endblock sidebar %}
+
 {% block content %}
-<div class="container js--content">
+
+<div class="container js--content container-fluid">
+    
     <div class="row">
+    
         <div class="col-12 py-4">
             <h2 class="text-center">{{self.title}}</h2>
             <h5 class="text-center">{{self.lesson_name}}</h5>
@@ -14,4 +96,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+
+
 {% endblock %}
