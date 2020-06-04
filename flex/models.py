@@ -10,7 +10,7 @@ class FlexPage(Page):
     """Flexible Page Class"""
 
     templates = "flex/flex_page.html"
-
+    parent_page_types = ["home.HomePage"]
     content = StreamField(
         [
             ("title_and_text", blocks.TitleAndTextBlock()),

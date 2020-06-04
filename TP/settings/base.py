@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'search',
     'site_settings',
     'subject',
+    'lesson',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
