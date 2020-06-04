@@ -1,0 +1,27 @@
+    {% extends 'core/master.html' %}
+    {% load wagtailimages_tags %}
+    
+    
+
+    {% block content %}
+    <div class="container js--content">
+        <div class="row">
+            <div class="col-12 py-4">
+                <div class="row">
+                <div class="col-lg-6">
+                <h1> {{self.title}} </h1>
+                    <p>{{self.description}}</p>
+                </div>
+                <div class="col-lg-6 clearfix">
+                    <picture>                        
+                        {% image self.image fill-350x420 as image %}
+                    <img src="{{image.url}}" alt="{{image.alt}}" height="auto;" style="width:100%">
+                    </picture>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock content %}
+    

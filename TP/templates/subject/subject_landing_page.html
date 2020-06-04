@@ -1,5 +1,7 @@
 {% extends "core\master.html" %}
 {% load static wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
 {% load menu_tags %}
 
 from streams import blocks
@@ -11,7 +13,8 @@ from streams import blocks
     <div class="row">
         <div class="col-12 py-4">
 
-
+           
+            {% comment %}                 
             {% for cycle in self.key_stage_card.all %}
             <div class="row">
                 <div class="card shadow card-dark">
@@ -32,8 +35,30 @@ from streams import blocks
                 </div>
             </div>
             {% endfor %}
+            {% endcomment %}
 
+            <div class="row mt-4">
+            {% for card in keystages %}                    
+                <div class="col-md-5 d-flex align-content-stretch">
+                    <div class="card mb-4 text-center">
+                        <a href="{{card.url}}">
+                        <picture>
+                            {% image card.image fill-573x369 as img %}
+                            <img src="{{img.url}}" alt="{{img.alt}}" class="lazy card-img-top">
+                        </picture>
+                        </a>
+                        <div class="card-body py-3 px-3">
+                            <a href="{{card.url}}">
+                                <h5 class="card-title">{{card.title}}</h5>
+                                <p class="card-description">{{card.description}}</p>
+                            </a>
+                            <p class="card-text">@TODO</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
 
+            </div>
 
 
 
