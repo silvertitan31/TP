@@ -1,0 +1,294 @@
+{% load static %}
+{% load wagtailcore_tags  wagtailimages_tags %}
+{% image self.banner_image max-1000x1000 as img %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/grid.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/queries.css' %}">
+    
+    {% comment %}
+        Override CSS HERE to allow user to select image from draftail
+    {% endcomment %}
+    <style>
+        header{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{{img.url}}');        }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+        rel="stylesheet">
+    <title>Teaching Periodically</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="row navbar">
+                <img src="{% static 'img/logo.png' %}" alt="TeachingPeriodically Logo" class="logo">
+                <img src="{% static 'img/logo_banner.png' %}" alt="TeachingPeriodically Logo" class="logo-black">
+
+                <ul class="main-nav">
+                    <li><a href="#">Curriculum</a></li>
+                    <li><a href="#">Question Generator</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Slides</a></li>
+                </ul>
+                
+            </div>
+        </nav>
+        <div class="hero-text-box">
+            <h1>{{self.banner_title}}</h1>
+            
+            <h2 style="color:white">{{self.banner_subtitle|richtext}}</h2>
+            {% if self.banner_cta_studying %}          
+                <a class="btn btn-full" href="#">Start Studying!</a>
+            {% endif %}
+            <a class="btn btn-ghost" href="#">Learn More...</a>
+
+        </div>
+    </header>
+    <section class="section-features js--section-features">
+        <div class="row">
+            <i class="fas fa-4x fa-gem text-primary mb-4"></i>
+            <h2>Study and Learn</h2>
+            <p class="long-copy"> GCSEs and A Levels are incredibly stressful for students, especially as there is so
+                much content to remember. One of the best ways to prepare (and this does take time!) is retrieval
+                practise - the process of quizzing yourself over and over. To help students do this, we have created the
+                Question Generator - a tool that allows you to create your own quizzes from a bank of hundreds questions
+                written by expert teachers. You can create quizzes from just one topic or multiple topics and download
+                them for yourself or to use with others. </p>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-4">
+                <i class="ion-ios-book-outline icon-big"></i>
+                <h3>High Quality</h3>
+                <p>Our lessons are pupil-tested. Learn from resources that have helped others achieve 9s at GCSE and A*
+                    at A Level!</p>
+            </div>
+            <div class="col span-1-of-4">
+                <i class="ion-ios-people-outline icon-big"></i>
+                <h3>Up to Date</h3>
+                <p>The lessons and resources are constantly reviewed to ensure they are of the highest quality</p>
+            </div>
+            <div class="col span-1-of-4">
+                <i class="ion-ios-people-outline icon-big"></i>
+                <h3>Easy To Use</h3>
+                <p>Our lessons use software that runs and adapts to whatever device you are using - no programs to
+                    download and easy to access anywhere.</p>
+            </div>
+            <div class="col span-1-of-4">
+                <i class="ion-ios-calendar-outline icon-big icon-big"></i>
+                <h3>Always Available</h3>
+                <p>Want to study on holiday (and who wouldn't?). Now you can! The resources are available 24 hours a
+                    day, 365 days a year.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section-subjects">
+        <ul class="subjects-showcase clearfix">
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/Biology.png' %}" alt="Biology">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/Chemistry.png' %}" alt="Chemistry">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/Physics.png' %}" alt="Physics">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/English.png' %}" alt="English">
+                </figure>
+            </li>
+        </ul>
+        <ul class="subjects-showcase clearfix">
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/PE.png' %}" alt="PE">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/Geography.png' %}" alt="Geography">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/History.png' %}" alt="History">
+                </figure>
+            </li>
+            <li>
+                <figure class="subject-photo">
+                    <img src="{% static 'img/subjects/Art.png' %}" alt="Art">
+                </figure>
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="section-steps">
+        <div class="row">
+            <h2>How to use the Question Generator</h2>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-2 steps-box">
+                <img src="{% static 'img/question.png' %}" alt="questiongenerator" class="question-generator">
+            </div>
+            <div class="col span-1-of-2 steps-box">
+                <div class="works-step">
+                    <div>1</div>
+                    <p>Access the website (which you've already done - good going)</p>
+                </div>
+                <div class="works-step">
+                    <div>2</div>
+                    <p>Navigate to Question Generator and choose your subject of interest</p>
+                </div>
+                <div class="works-step">
+                    <div>3</div>
+                    <p>Choose one of the three topic options. Your questions will appear.</p>
+                </div>
+
+            </div>
+    </section>
+
+
+    <section class="section-boards">
+        <div class="row">
+            <h2>We cover subjects from these Exam Boards</h2>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-4 box">
+                <img src="{% static '/img/edexcel.webp' %}" alt="Edexcel">
+                <h3>Edexcel (Pearson)</h3>
+                <div class="exam-feature">
+                    <a href="https://qualifications.pearson.com/en/home.html">Visit Website (External)</a>
+                </div>
+            </div>
+            <div class="col span-1-of-4 box">
+                <img src="{% static '/img/aqa.jpg' %}" alt="AQA">
+                <h3>AQA</h3>
+                <div class="exam-feature">
+                    <a href="www.aqa.org.uk">Visit Website (External)</a>
+                </div>
+            </div>
+            <div class="col span-1-of-4 box">
+                <img src="{% static '/img/ocr.jpg' %}" alt="OCR">
+                <h3>OCR</h3>
+                <div class="exam-feature">
+                    <a href="www.ocr.org.uk">Visit Website (External)</a>
+                </div>
+
+            </div>
+            <div class="col span-1-of-4 box">
+                <img src="{% static '/img/WJEC.png' %}" alt="WJEC">
+                <h3>WJEC</h3>
+                <div class="exam-feature">
+                    <a href="www.wjec.co.uk">Visit Website (External)</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-testimonials">
+        <div class="row">
+            <h2>Functionality for Students and Teachers</h2>
+        </div>
+        <div class=row>
+            <div class="col  span-1-of-3">
+                <blockquote>
+                    Students can access a variety of resources from random questionsm, quizes, and lessons.
+                    <cite>
+                        <img src="{% static '/img/student.png' %}" alt="student-icon">
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="col span-1-of-3">
+                <blockquote>
+                    Teachers can access a variety of resources from random questionsm, quizes, and lessons.
+                    <cite>
+                        <img src="{% static '/img/teacher.png' %}" alt="teacher-female-icon">
+                    </cite>
+                </blockquote>
+            </div>
+            <div class="col span-1-of-3">
+                <blockquote>
+                    Teachers can access a variety of resources from random questionsm, quizes, and lessons.
+                    <cite>
+                        <img src="{% static '/img/teacher2.png' %}" alt="teacher-male-icon">
+                    </cite>
+                </blockquote>
+            </div>
+        </div>
+
+    </section>
+    <section>
+
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Data Protection</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-icons">
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <p>
+                Copyright &copy; 2020 by TeachingPeriodically
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{%static '/vendor/jquery.waypoints.js' %}"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".js--section-features").waypoint(function (direction) {
+                if (direction == "down") {
+
+                    $('nav').addClass('sticky');
+                }
+                else {
+                    $('nav').removeClass('sticky');
+                }
+            }, {
+                offset: '600px'
+            })
+
+        })
+    </script>
+
+</body>
+
+
+
+</html>
