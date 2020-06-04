@@ -1,0 +1,17 @@
+{% extends 'core/master.html' %}
+
+{% block content %}
+<div class="container js--content">
+    <div class="row">
+        <div class="col-12 py-4">
+            <h2 class="text-center">{{self.title}}</h2>
+            <h5 class="text-center">{{self.lesson_name}}</h5>
+            <div class="row">
+                <iframe src="{{self.presentation_link}}" width="100%" height="720" allowfullscreen="allowfullscreen"frameborder="0">
+            </div>
+            
+            </iframe>
+        </div>
+    </div>
+</div>
+{% endblock %}
