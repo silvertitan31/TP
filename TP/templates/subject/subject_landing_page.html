@@ -34,14 +34,28 @@
             </div>
             {% endfor %}
             {% endcomment %}
-
+            <div class="row mt-4 mr-4">
+                <div class="col-12 com-md-4 col-md-margin-4">
+                    <div class="card shadow">
+                        <div class="card-header bg-success text-white border-dark">
+                     <h4 class="text-center">Welcome to Chemistry</h4>
+                    </div>
+                <div class="card-body border-dark shadow">
+                    <blockquote class=" text-left card-text border-dark text-dark font-weight-lighter">
+                        Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. 
+                    
+                </blockquote>
+                </div>
+                </div>
+            </div>
             <div class="row mt-4">
+            
             {% for card in keystages %}                    
-                <div class="col-md-5 d-flex align-content-stretch">
+                <div class="col-md-4 d-flex align-content-stretch">
                     <div class="card mb-4 text-center">
                         <a href="{{card.url}}">
                         <picture>
-                            {% image card.image fill-573x369 as img %}
+                            {% image card.image fill-1300x1300 as img %}
                             <img src="{{img.url}}" alt="{{img.alt}}" class="lazy card-img-top">
                         </picture>
                         </a>
