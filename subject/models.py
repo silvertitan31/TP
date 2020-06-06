@@ -26,6 +26,9 @@ class SubjectLandingPage(Page):
     class Meta:
         verbose_name = 'Subject Overview Page'
         verbose_name_plural = 'Subject Overview Pages'
+        
+    def __str__(self):
+        return self.title
 
 
     def get_context(self,request,*args,**kwargs):

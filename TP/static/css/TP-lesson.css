@@ -72,7 +72,7 @@ main {
 }
 
 .bd-navbar {
-    min-height: 4rem;
+    min-height: 1rem;
     background-color: #563d7c;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
     position: sticky;
@@ -212,7 +212,6 @@ main {
 
 .bd-toc-link:hover {
     color: rgba(0, 0, 0, .85);
-    font-weight: bolder;
     text-decoration: none;
 }
 
@@ -246,7 +245,7 @@ main {
 
 .bd-sidebar .nav>li>a:hover {
     color: rgba(0, 0, 0, .85);
-    font-weight: bolder;
+    
     text-decoration: none;
     background-color: transparent
 }

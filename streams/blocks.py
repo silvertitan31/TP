@@ -49,3 +49,30 @@ class SubjectModuleBlock(blocks.StructBlock):
         template = "streams/subject_module_block.html"
         icon = "doc-full"
         label = "Add Module Information"
+        
+       
+       
+class LessonBlock(blocks.RichTextBlock):
+    '''Rich Text only with Subset used for lesson '''
+    '''@TODO add chemistry and mathematics  specific functions '''
+
+    def __init__(self, required=True, help_text=None, editor='default', features=None, validators=(), **kwargs):
+        super().__init__(**kwargs)
+        self.features = ['bold', 'italic', 'link', 'h4', 'ul', 'li','image']
+
+    class Meta:
+        label = "Section Content"      
+        
+        
+class LessonContentBlock(blocks.StructBlock):
+    '''Block containing Lesson Content. Each block will be wrapped ina section for css purposes'''
+    
+    title = blocks.CharBlock(required=True, label="Section Title",help_text="Add Section Title",max_length=40)
+    text = LessonBlock(required=True, help_text="Add Section Content")
+
+
+    class Meta:
+        template = 'streams/lesson_content_block.html'
+        icon = "doc-full"
+        label = "Lesson Sections"
+        help_text = "Each lesson section will cause  a link to be added to  sidebar for ease of navigation. Each section must have a title along with its content."

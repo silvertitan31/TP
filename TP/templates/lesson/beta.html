@@ -1,4 +1,112 @@
-{% extends 'core/master_beta.html' %}
-{% load static %}
+{% extends 'core/lesson.html' %}
+{% load static wagtailcore_tags %}
+
+{% block extra_css %}
+<style>
+    section ul {
+        margin-left: 1.2em;
+        padding-left: 1.25em;
+        font-weight: lighter;
+        font-size: smaller;
+        list-style: circle;
+        padding-right: 1em;
+    }
+
+    section li {
+        padding-bottom: 2px;
+        text-align: justify;
+    }
+    .bd-toc-item {
+       padding-bottom:1em;
+    }
+
+    .bd-sidenav li {
+        padding: 0;
+        margin-bottom: -5px;
+        margin-left: 1em;
+        
+    }
+ 
+
+</style>
+{% endblock %}
+
+{% block navbar-subject %}
+{% for subject in subject_name %}
+<li class="nav-item">
+    <a class="nav-link" href="{{subject.url}}">{{subject.title}}</a>
+</li>
+{% endfor %}
+{% endblock navbar-subject %}
 
 
+{% block sidebar %}
+<div class="bd-toc-item">
+    <li class="text-primary bd-toc-link">
+        <strong>{{self.title}}</strong>
+    </li>
+    <ul class="nav current-lesson bd-sidenav">
+    </ul>
+</div>
+
+<div class="bd-toc-item">
+    <a class="bd-toc-link" href="{{key_stage.url}}">
+        <strong>{{key_stage}}</strong>
+    </a>
+    <ul class="nav bd-sidenav">
+        {% for element in siblings %}
+            <li><a href="{{element.url}}">{{ element }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock sidebar %}
+
+
+{%block content %}
+<section>
+    <h3 class="font-weight-bolder mb-4">{{self.lesson_name}}</h3>
+    <h5 class="lesson-section">Lesson Objectives</h5>
+    <p>{{self.lesson_summary|richtext}}</p>
+</section>
+
+{%for block in self.content2 %}
+<section>
+    {% include_block block %}
+    <hr>
+</section>
+{%endfor%}
+
+{% if self.presentation_link %}
+<section>
+    <h4 class="lesson-section font-weight-bolder mb-2"> Presentation</h4>
+    <iframe src="{{self.presentation_link}}" width="100%" height="720" allowfullscreen="allowfullscreen"
+        frameborder="0"></iframe>
+</section>
+{% endif %}
+
+
+
+{%endblock content %}
+
+
+{% block extra_js %}
+<script>
+    $(document).ready(function () {
+
+        let headings = [];
+        $('.lesson-section').each(function () {
+            console.log($(this).text());
+            headings.push($(this).text())
+        })
+
+        for (i = 0; i < headings.length; i++) {
+            var link_title = headings[i];
+            $('ul.current-lesson').append("<li><a href='#" + link_title + "'>" + link_title + "</a></li>");
+        }
+        console.log(headings)
+    });
+
+
+
+</script>
+{% endblock extra_js %}
