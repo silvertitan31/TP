@@ -44,12 +44,8 @@ class Beta(Page):
     lesson_summary = RichTextField(max_length=500, null=False, blank=False, help_text="Enter a description of this lesson. Use bullet points rather than paragraphs to separate out the key ojectives. You can use up to 500 characters.", features=[ 'ul', 'bold', 'italic', ])
 
     presentation_link = models.URLField(max_length=200,blank=True,null=True)
-    
-    
-    content = RichTextField(blank=True,null=True)
-      
-      
-    content2 = StreamField(
+        
+    content = StreamField(
         [
             ("test", blocks.LessonContentBlock()),
             
@@ -64,8 +60,7 @@ class Beta(Page):
         FieldPanel("lesson_name"),
         FieldPanel("lesson_summary"),
         FieldPanel("presentation_link"),
-        RichTextFieldPanel("content"),
-        StreamFieldPanel('content2'),
+        StreamFieldPanel("content"),
       ]
     
     def get_context(self,request,*args,**kwargs):

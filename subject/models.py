@@ -40,10 +40,7 @@ class SubjectLandingPage(Page):
 
 class SubjectKSLandingPage(Page):
         '''KS Landing Page Per Subject'''
-        
-       
-          
-        
+                
         class Meta:
             verbose_name = "Key Stage Description for Subject"
         
@@ -84,7 +81,10 @@ class SubjectKSLandingPage(Page):
             PageChooserPanel('internal_page')
     ]
 
-
+        def get_context(self,request,*args,**kwargs):
+            context = super().get_context(request,*args,**kwargs)
+            context["modules"] = self.get_children().live().public()
+            return context
 
 
 class SubjectKeyStageCard(Orderable):
