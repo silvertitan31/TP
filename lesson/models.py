@@ -54,6 +54,14 @@ class Beta(Page):
         blank=True
     )
       
+    
+    quiz = StreamField(
+        [
+            ("quizBlock",blocks.QuizBlock()),
+        ],
+        null= True,
+        blank = True
+    )
       
     content_panels = Page.content_panels + [
           
@@ -61,6 +69,8 @@ class Beta(Page):
         FieldPanel("lesson_summary"),
         FieldPanel("presentation_link"),
         StreamFieldPanel("content"),
+        StreamFieldPanel("quiz"),
+
       ]
     
     def get_context(self,request,*args,**kwargs):
