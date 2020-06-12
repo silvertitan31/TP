@@ -101,16 +101,30 @@
 
         let headings = [];
         $('.lesson-section').each(function () {
-            console.log($(this).text());
             headings.push($(this).text())
         })
 
         for (i = 0; i < headings.length; i++) {
             var link_title = headings[i];
-            $('ul.current-lesson').append("<li><a href='#" + link_title + "'>" + link_title + "</a></li>");
+            $('ul.current-lesson').append("<li class='sectionLink' name='"+ link_title + "'><a name='"+ link_title + "' href='#" + link_title + "'>" + link_title + "</a></li>");
         }
-        console.log(headings)
     });
+
+
+
+    function scrollToAnchor(aid) {
+        var aTag = $("a[id='" + aid + "']");
+        // alert("a[id='" + aid + "']")
+        $('html,body').animate({ scrollTop: aTag.offset().top -100 }, 'fast');
+    }
+
+    
+    $("ul").on("click", "li.sectionLink", function(){
+       sectionLink = $(this).attr("name")
+        scrollToAnchor(sectionLink);
+});
+
+</script>
 
 
 
