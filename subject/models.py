@@ -15,12 +15,16 @@ class SubjectLandingPage(Page):
     templates = 'subject/subject_landing_page.html'
     parent_page_types = ["home.HomePage"]
     
-    subject = models.CharField(
-        blank=False, null=False, max_length=20, unique=True, help_text='Enter the Subject Name')
-
+    subject = models.CharField(blank=False, null=False, max_length=20, unique=True, help_text='Enter the Subject Name')
+    subject_quote = RichTextField(blank=True, null=True, max_length=300,features=['h5', 'bold', 'italic', ])    
+    subject_content = RichTextField(blank=False, null=True, features=['h5', 'bold', 'italic', 'link','ol','ul','superscript','subscript'])
+    subject_image =  models.ForeignKey('wagtailimages.Image',null=True,blank = False,on_delete = models.SET_NULL,related_name = "+",help_text = "This will be used on the landing page and will be cropped")
+        
     content_panels = Page.content_panels + [
         FieldPanel('subject', heading='Subject Name'),
-        InlinePanel('key_stage_card', max_num=4, min_num=1)
+        RichTextFieldPanel('subject_quote', heading='Subject Quote (Flavour Text)'),
+        RichTextFieldPanel('subject_content', heading='Subject Information'),
+        ImageChooserPanel('subject_image', heading="Subject Image"),
     ]
 
     class Meta:
@@ -33,7 +37,8 @@ class SubjectLandingPage(Page):
 
     def get_context(self,request,*args,**kwargs):
         context = super().get_context(request,*args,**kwargs)
-        context["keystages"] = SubjectKSLandingPage.objects.live().public()
+        # context["keystages"] = SubjectKSLandingPage.objects.live().public()
+        context['keystages'] = SubjectKSLandingPage.objects.live().public().filter(title__icontains=self.subject)
         context['SubjectLandingPage'] = self
         context['menuitems'] = self.get_children().filter(live=True, show_in_menus=True)
         return context

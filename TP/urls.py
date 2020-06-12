@@ -10,7 +10,7 @@ from wagtail.contrib.sitemaps.views import sitemap
 from search import views as search_views
 
 urlpatterns = [
-    path('', include('quiz.urls')),
+    
     
     url(r'^django-admin/', admin.site.urls),
 
@@ -38,7 +38,6 @@ urlpatterns = urlpatterns + [
     # the list:
     
     url(r'^sitemap.xml$', sitemap),
-    url(r'^api-auth/', include('rest_framework.urls')),
     
     url(r"", include(wagtail_urls)),
 

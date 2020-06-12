@@ -1,84 +1,48 @@
 {% extends "core/master.html" %}
 {% load static wagtailcore_tags %}
 {% load wagtailimages_tags %}
-
 {% load menu_tags %}
 
 
 
 {% block content %}
-
-<div class="container js--content">
- <div class="row">
-        <div class="col-12 py-4">
-           
-            {% comment %}                 
-            {% for cycle in self.key_stage_card.all %}
+<div class="container-fluid">
+    <div class="row py-4">
+        <div class="col-lg-7 ">
             <div class="row">
-                <div class="card shadow card-dark">
-                    <div class="card-header text-center">
-                        <h5 class="text-uppercase font-weight-bolder text-center align-middle">{{cycle.title}}</h5>
-                        <p class="text-right">
-                            {{cycle.description|richtext}}
-                        </p>
+                <div class="col-md-12 col-xs-4 flex">
+                    <h2 class="text-center">Welcome to {{self.subject}}!</h2>
+                    {% if self.subject_quote %}
+                    <blockquote class="shadow">{{self.subject_quote|richtext}}</blockquote>
+                    {%  endif %}
+                </div>
+            </div>
+            <section class="subject-description text-justify ml-2">
+                {{self.subject_content|richtext}}
+            </section>
+        </div>
+
+        {% image page.subject_image fill-350x350 as img %}
+        <div class="col-lg-5">
+            <div class="row">
+                <img class="subject" src='{{img.url}}' alt='{{img.alt}}'>
+                
+                {% for card in keystages %}
+                <div class="card shadow card-elegant text-center">
+                    <div class="card-title">
+                        <a href="{{card.url}}">{{card.title}}</a>
                     </div>
                     <div class="card-body">
-                        <ul class="list-unstyled card-columns">
-                        {%for block in cycle.content %}
-                        {% include_block block %}
-                        {%endfor%}
-                    </ul>
-                    </div>
-                </div>
-                </div>
-            </div>
-            {% endfor %}
-            {% endcomment %}
-            <div class="row mt-4 mr-4">
-                <div class="col-12 com-md-4 col-md-margin-4">
-                    <div class="card shadow">
-                        <div class="card-header bg-success text-white border-dark">
-                     <h4 class="text-center">Welcome to Chemistry</h4>
-                    </div>
-                <div class="card-body border-dark shadow">
-                    <blockquote class=" text-left card-text border-dark text-dark font-weight-lighter">
-                        Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. Chemistry covers all aspect of the chemical world. 
-                    
-                </blockquote>
-                </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-            
-            {% for card in keystages %}                    
-                <div class="col-md-4 d-flex align-content-stretch">
-                    <div class="card mb-4 text-center">
-                        <a href="{{card.url}}">
-                        <picture>
-                            {% image card.image fill-1300x1300 as img %}
-                            <img src="{{img.url}}" alt="{{img.alt}}" class="lazy card-img-top">
-                        </picture>
+                        <small class="card-text">{{card.description}}</small>
                         </a>
-                        <div class="card-body py-3 px-3">
-                            <a href="{{card.url}}">
-                                <h5 class="card-title">{{card.title}}</h5>
-                                <p class="card-description">{{card.description}}</p>
-                            </a>
-                            <p class="card-text">@TODO</p>
-                        </div>
                     </div>
                 </div>
-            {% endfor %}
 
+                {% endfor %}
             </div>
-
-
-
-
         </div>
     </div>
-    <!--/row-->
 </div>
-<!--container-->
+
 
 {% endblock content %}

@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'site_settings',
     'subject',
     'lesson',
-    'quiz',
+
  
     
     'wagtail.core',
