@@ -24,8 +24,22 @@
         padding: 0;
         margin-bottom: -5px;
         margin-left: 1em;
-        
+       
     }
+
+.lesson-summary{
+    width: 90%;
+    margin-bottom: 1rem;
+    color: #202020;
+    padding: 1rem 1.5rem 0.1rem 1rem;
+    border-left: 8px solid #78C0A8;
+    text-align: justify;
+    line-height: 1.5;
+    position: relative;
+    background: #EDEDED;
+    margin-right: 15rem;
+}
+
  
 
 </style>
@@ -63,10 +77,12 @@
 
 
 {%block content %}
-<section>
+<section class>
     <h3 class="font-weight-bolder mb-4">{{self.lesson_name}}</h3>
-    <h5 class="lesson-section">Lesson Objectives</h5>
-    <p>{{self.lesson_summary|richtext}}</p>
+    <div class='lesson-summary'>
+        <h5 class='lesson-section font-weight-bolder'><a id='Lesson Objectives'></a>Lesson Objectives</h5>
+        <p>{{self.lesson_summary|richtext}}</p>
+    </div>
 </section>
 
 {%for block in self.content %}
@@ -121,5 +137,4 @@
 
 
 
-</script>
 {% endblock extra_js %}
