@@ -58,11 +58,28 @@ class LessonBlock(blocks.RichTextBlock):
 
     def __init__(self, required=True, help_text=None, editor='default', features=None, validators=(), **kwargs):
         super().__init__(**kwargs)
-        self.features = ['bold', 'italic', 'link', 'h4', 'ul', 'li','image']
+        self.features = ['bold', 'italic', 'link', 'h5', 'ul', 'li','image', 'superscript',]
 
     class Meta:
         label = "Section Content"      
         
+
+class InfoBlock(blocks.RichTextBlock):
+    '''Info block '''
+
+    def __init__(self, required=False, help_text=None, editor='default', features=None, validators=(), **kwargs):
+        super().__init__(**kwargs)
+        self.features = ['bold', 'italic', 'h5', 'supercript','superscript',]
+        self.help_text= 'This field is used to draw attention to something or highlight something of intrest'
+    
+    
+    
+    class Meta:
+        label = "Highlight" 
+        template = 'streams/info.html'  
+        icon="info"  
+    
+    
         
 class LessonContentBlock(blocks.StructBlock):
     '''Block containing Lesson Content. Each block will be wrapped ina section for css purposes'''
@@ -70,14 +87,9 @@ class LessonContentBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True, label="Section Title",help_text="Add Section Title",max_length=40)
     text = LessonBlock(required=True, help_text="Add Section Content")
 
-
     class Meta:
         template = 'streams/lesson_content_block.html'
         icon = "doc-full"
         label = "Lesson Sections"
         help_text = "Each lesson section will cause  a link to be added to  sidebar for ease of navigation. Each section must have a title along with its content."
 
-
-    
-    
-    

@@ -47,15 +47,15 @@ class Beta(Page):
         
     content = StreamField(
         [
-            ("test", blocks.LessonContentBlock()),
-            
+            ("test", blocks.LessonContentBlock()),   
+            ('info', blocks.InfoBlock()),         
         ],
         null=True,
         blank=True
     )
-      
     
-         
+    
+        
     content_panels = Page.content_panels + [
           
         FieldPanel("lesson_name"),
