@@ -78,20 +78,6 @@ class LessonContentBlock(blocks.StructBlock):
         help_text = "Each lesson section will cause  a link to be added to  sidebar for ease of navigation. Each section must have a title along with its content."
 
 
-class QuizBlock(blocks.StructBlock):
-    '''block containing question text, answer options, and answer as number'''
-    question = blocks.RichTextBlock(required=True, label = "Question", help_text = "Add Question",)
-    choice1 = blocks.RichTextBlock(required=True, label = "Choice 1", help_text = "Add Answer Choice 1",)
-    choice2 = blocks.RichTextBlock(required=True, label = "Choice 2", help_text = "Add Answer Choice 2",)
-    choice3 = blocks.RichTextBlock(required=True, label = "Choice 3", help_text = "Add Answer Choice 3",)
-    choice4 = blocks.RichTextBlock(required=True, label = "Choice 4", help_text = "Add Answer Choice 4",)
-    answer = blocks.IntegerBlock(min_value=1, max_value=4, required = True, label = "Answer Choice", help_text = "Enter the  answer number (1,2,3,4)")
-    
-    class Meta:
-        label = "Quiz Questions"
-        template = 'streams/quiz_block.html'
-        icon = "doc-full"
-  
     
     
     
