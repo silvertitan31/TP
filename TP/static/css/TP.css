@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Raleway' !important;
 }
 
 html {
@@ -174,11 +175,12 @@ blockquote span {
 }
 
 img.subject {
-    border-radius: 20%;
+    vertical-align: middle;
+    border-style: none;
     max-width: 100%;
     height: auto;
-    opacity: 0.5;
-    padding: 20px;
+    opacity: 0.9;
+  
 }
 
 section.subject-description {
@@ -190,25 +192,31 @@ section.subject-description {
     position: relative;
 }
 
+section.keystage{
+    background-color: #e6f6fc;
+}
+
 /* CARDS */
 
 .card-elegant {
-    background-color: #f3eaea;
+    background-color: #3654b6;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
-    border: none;
-    border: 2px none rgba(255, 253, 208, 0.6);
+    border: 4px solid rgb(19, 16, 59);
     width: 100%;
+ 
     margin-left: 2rem;
     margin-right: 2rem;
     margin-bottom: 1rem;
+    margin-top: 2rem;
     transition: all 0.2s;
 }
 
 .card-elegant:hover {
     scale: 1.1;
-    background-color: rgba(255, 253, 208, 0.6);
-    border: 3px solid rgb(253, 250, 190);
+
     border-radius: 10%;
+    cursor: pointer;
+    background-color: #172b6e;
 }
 
 .card-elegant .card-body {
@@ -221,13 +229,14 @@ section.subject-description {
     letter-spacing: .05rem;
     margin: 0.5rem 0;
     font-size: 0.8rem;
-    color: #40423d;
+    color: #fcfcfc;
 }
 
 .card-elegant a {
     font-size: larger;
     border-bottom: none;
     transition: border-bottom 0.1s;
+    color: #fcfcfc;
 }
 
 .card-elegant a:hover {
@@ -237,9 +246,22 @@ section.subject-description {
 }
 
 .card-elegant .card-text {
-    color: #494846;
+    color: #fcfcfc;
     font-size: .8rem;
+    font-weight: bolder;
     /* padding-bottom: 2.5rem;
     margin: 0 auto 2.4rem;
     max-width: 9.375rem; */
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
 }

@@ -6,27 +6,22 @@
 
 
 {% block content %}
+
 <div class="container-fluid">
-    <div class="row py-4">
-        <div class="col-lg-7 ">
-            <div class="row">
-                <div class="col-md-12 col-xs-4 flex">
-                    <h2 class="text-center">Welcome to {{self.subject}}!</h2>
-                    {% if self.subject_quote %}
+    {% if self.subject_quote %}
+    <div class="row pt-4">
+        <blockquote>{{self.subject_quote|richtext}}</blockquote>
+    </div>
+    {%  endif %}
+    <!-- <div class="row py-4">
+        {% if self.subject_quote %}
                     <blockquote class="shadow">{{self.subject_quote|richtext}}</blockquote>
                     {%  endif %}
-                </div>
-            </div>
-            <section class="subject-description text-justify ml-2">
-                {{self.subject_content|richtext}}
-            </section>
-        </div>
-
-        {% image page.subject_image fill-350x350 as img %}
-        <div class="col-lg-5">
+        
+        <div class="col-lg-6">
             <div class="row">
                 <img class="subject" src='{{img.url}}' alt='{{img.alt}}'>
-                
+
                 {% for card in keystages %}
                 <div class="card shadow card-elegant text-center">
                     <div class="card-title">
@@ -41,8 +36,42 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="col-lg-6 pt-lg-0">
+            <section class="subject-description text-justify">
+                {{self.subject_content|richtext}}
+            </section>
+        </div>
+
+
+    </div> -->
+    {% image page.subject_image fill-540x405 as img %}
+    <div class="row pt-2">
+        <div class="col-lg-6">
+            <img src="{{img.url}}" class="img-fluid" alt="{{img.alt}}">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+            {{self.subject_content|richtext}}
+        </div>
     </div>
 </div>
+</div>
+<section class="keystage">
+    <div class="row">
+        {% for card in keystages %}
+        <div class="col-lg-4 col-12">
+            <div class="text-center card shadow card-elegant">
+                <div class="card-title">
+                    <a href="{{card.url}}">{{card.title}}</a>
+                </div>
+                <div class="card-body">
+                    <small class="card-text">{{card.description}}</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 
 
 {% endblock content %}
