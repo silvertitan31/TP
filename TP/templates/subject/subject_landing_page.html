@@ -3,75 +3,108 @@
 {% load wagtailimages_tags %}
 {% load menu_tags %}
 
+{% block extra_css %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
+  <style>
+    * {
+      font-family: 'Fira Sans', sans-serif !important;
+    }
+
+    img {
+      width: 100%;
+      height: 232px;
+      
+    }
+
+       header {
+      background-color: rgba(20, 53, 80, 0.8) !important;
+    }
+
+    .card{
+      border: none;
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.19) !important;
+      transition: all 0.2s;
+    }
+
+    .card:hover{
+      scale: 1.01;
+      opacity: 0.9;
+      box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.404),0 6px 20px 0 rgba(0, 0, 0, 0.377) !important;
+    }
+
+  </style>
+
+
+{% endblock %}
+{% block navbar-secondary %}{% endblock %}
 
 {% block content %}
 
-<div class="container-fluid">
-    {% if self.subject_quote %}
-    <div class="row pt-4">
-        <blockquote>{{self.subject_quote|richtext}}</blockquote>
-    </div>
-    {%  endif %}
-    <!-- <div class="row py-4">
-        {% if self.subject_quote %}
-                    <blockquote class="shadow">{{self.subject_quote|richtext}}</blockquote>
-                    {%  endif %}
-        
-        <div class="col-lg-6">
-            <div class="row">
-                <img class="subject" src='{{img.url}}' alt='{{img.alt}}'>
 
-                {% for card in keystages %}
-                <div class="card shadow card-elegant text-center">
-                    <div class="card-title">
-                        <a href="{{card.url}}">{{card.title}}</a>
-                    </div>
-                    <div class="card-body">
-                        <small class="card-text">{{card.description}}</small>
-                        </a>
-                    </div>
-                </div>
-
-                {% endfor %}
+<!-- Header -->
+<header class="py-1 mb-5">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-4 text-center text-white mt-5 mb-2">{{self.subject}}</h1>
+                <blockquote class="lead mb-5">{{self.subject_quote|richtext}}</p>
             </div>
         </div>
-        <div class="col-lg-6 pt-lg-0">
-            <section class="subject-description text-justify">
-                {{self.subject_content|richtext}}
-            </section>
-        </div>
+    </div>
+</header>
 
+<!-- Page Content -->
+<div class="container">
 
-    </div> -->
-    {% image page.subject_image fill-540x405 as img %}
-    <div class="row pt-2">
-        <div class="col-lg-6">
-            <img src="{{img.url}}" class="img-fluid" alt="{{img.alt}}">
-        </div>
-        <div class="col-lg-6 pt-4 pt-lg-0">
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <h2>Course Content</h2>
+            <hr>
             {{self.subject_content|richtext}}
         </div>
+        <div class="col-md-4 mb-5">
+            <h2>Some Content</h2>
+            <hr>
+            <address>
+                <strong>Maybe an example module</strong>
+                <br>or a list of the newest lessons
+                <br>or a lijnk to something else?
+                <br>
+            </address>
+            <address>
+                <abbr title="Phone">With</abbr>
+                Some useful links/resources here
+                <br>
+                <abbr title="Email">Contact:</abbr>
+                <a href="mailto:#">And contact/message button here?</a>
+            </address>
+        </div>
     </div>
-</div>
-</div>
-<section class="keystage">
+    <!-- /.row -->
+
     <div class="row">
         {% for card in keystages %}
-        <div class="col-lg-4 col-12">
-            <div class="text-center card shadow card-elegant">
-                <div class="card-title">
-                    <a href="{{card.url}}">{{card.title}}</a>
+        {% image card.image fill-300x200 as card_img %}
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <img class="card-img-top" src="{{card_img.url}}" alt="{{card_img.alt}}">
+                <div class="card-body text-center">
+                    <h4 class="card-title">{{card.title}}</h4>
+                    <p class="card-text">{{card.description}}</p>
                 </div>
-                <div class="card-body">
-                    <small class="card-text">{{card.description}}</small>
-                    </a>
+                <div class="card-footer  bg-dark text-center">
+                    <a href="{{card.url}}" class="stretched-link btn btn-lg btn-block btn-dark">Find Out More!</a>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
-</section>
-
-
+        
+        
+       
+</div>
+<!-- /.container -->
 {% endblock content %}
