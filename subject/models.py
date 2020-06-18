@@ -7,7 +7,7 @@ from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streams import blocks
-
+from lesson.models import Beta
 
 class SubjectLandingPage(Page):
     '''Subject Landing Page (Brief Overview of Subjects with more details'''
@@ -60,14 +60,6 @@ class SubjectKSLandingPage(Page):
             help_text = "Please insert a short description as to what this Key Stage covers"
         )
         
-        internal_page = models.ForeignKey(
-            'wagtailcore.Page',
-             on_delete=models.SET_NULL,
-             blank = True,
-             null = True,
-             related_name = "+",
-             help_text = "Set an internal page",
-        )
         
         image = models.ForeignKey(
             'wagtailimages.Image',
@@ -82,8 +74,7 @@ class SubjectKSLandingPage(Page):
         
             FieldPanel('title', heading="Key Stage"),
             RichTextFieldPanel('description'),
-            ImageChooserPanel('image'),
-            PageChooserPanel('internal_page')
+            ImageChooserPanel('image'),            
     ]
 
         def get_context(self,request,*args,**kwargs):
@@ -92,28 +83,57 @@ class SubjectKSLandingPage(Page):
             return context
 
 
-class SubjectKeyStageCard(Orderable):
-    '''Between 1 and 4 '''
+class ModuleLandingPage(Page):
+        '''Landing Page for each module with a list of all the lessons on'''
+        class Meta:
+            verbose_name = "Module Page"
+        
+        templates  = 'subject/module_landing_page.html'
+        parent_page_types = ["subject.SubjectKSLandingPage"]
 
-    page = ParentalKey('subject.SubjectLandingPage', related_name='key_stage_card')
-    title = models.CharField(max_length=20, null=False, blank=False, unique=True, help_text="Enter the Key Stage Level")
-    description = RichTextField(max_length=200, null=False, blank=False, help_text="Enter information about what this Key Stage covers", features=['h4', 'h5', 'bold', 'italic', ])
 
-    
-    content = StreamField(
-        [
-            ("test", blocks.SubjectModuleBlock()),
+        description = RichTextField(
+            blank=False, 
+            null=True,
+            max_length= 400,
+            help_text = "Please insert a short description explaining what this module covers"
+        )
+
+
+        content_panels = Page.content_panels + [
+             RichTextFieldPanel('description'),
+        ]
             
-        ],
-        null=True,
-        blank=True
-    )
+        
+        def get_context(self,request,*args,**kwargs):
+            context = super().get_context(request,*args,**kwargs)
+            context["modules"] = self.get_children().live().public().specific()
+            context['test'] = Beta.objects.live().public().all().specific()
+            return context
+
+
+# class SubjectKeyStageCard(Orderable):
+#     '''Between 1 and 4 '''
+
+#     page = ParentalKey('subject.SubjectLandingPage', related_name='key_stage_card')
+#     title = models.CharField(max_length=20, null=False, blank=False, unique=True, help_text="Enter the Key Stage Level")
+#     description = RichTextField(max_length=200, null=False, blank=False, help_text="Enter information about what this Key Stage covers", features=['h4', 'h5', 'bold', 'italic', ])
+
+    
+#     content = StreamField(
+#         [
+#             ("test", blocks.SubjectModuleBlock()),
+            
+#         ],
+#         null=True,
+#         blank=True
+#     )
     
     
-    panels = [
-        FieldPanel('title', heading="Key Stage"),
-        RichTextFieldPanel('description'),
-        StreamFieldPanel('content'),
-    ]
+#     panels = [
+#         FieldPanel('title', heading="Key Stage"),
+#         RichTextFieldPanel('description'),
+#         StreamFieldPanel('content'),
+#     ]
 
     

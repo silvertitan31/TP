@@ -13,7 +13,7 @@ from streams import blocks
 class LessonPage(Page):
     
     templates = 'lesson/beta.html'
-    parent_page_types = ["subject.SubjectLandingPage","subject.SubjectKSLandingPage"]
+    parent_page_types = ["subject.ModuleLandingPage"]
     
     lesson_name = models.CharField(
         max_length = 150,
@@ -32,6 +32,8 @@ class LessonPage(Page):
     
        
 class Beta(Page):
+
+    parent_page_types = ["subject.ModuleLandingPage"]
 
     templates = 'lesson/beta.html'
     lesson_name = models.CharField(

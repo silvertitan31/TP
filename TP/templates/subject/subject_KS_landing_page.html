@@ -1,12 +1,12 @@
 {% extends 'core/master.html' %}
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags static %}
 
 {% block extra_css %}
 <style>
     .services .icon-box {
         text-align: center;
         background: rgba(204, 204, 204, 0.3);
-        padding: 80px 20px;
+        padding: 20px 20px;
         transition: all ease-in-out 0.3s;
         border: 1px black solid;
         box-shadow: 0 0.5rem 1rem rgba(29, 15, 219, 0.274) !important; 
@@ -35,10 +35,10 @@
 
         <div class="row ">
             {% for module in modules %}
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch border-dark">
+            <div class="col-lg-4 col-md-4 d-flex align-items-stretch border-dark">
                 <div class="icon-box shadow">
                     <div class="icon">
-                        <picture><img height="50px" width="50px" src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.svg/220px-Stylised_atom_with_three_Bohr_model_orbits_and_stylised_nucleus.svg.png'></picture>
+                        <picture><img height="50px" width="50px" src='{% static "img/lesson-icon.png" %}'></picture>
                     </div>
                     <h4><a href="{{module.url}}">{{module}}</a></h4>
                     <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
