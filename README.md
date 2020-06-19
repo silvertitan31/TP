@@ -2,3 +2,5 @@
 TEACHING PERIODICALLY DJANGO code using wagtail for main site.
 
 The QuestionGenerator Will be uploaded separately.
+
+V0.61
